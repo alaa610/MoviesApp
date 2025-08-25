@@ -1,0 +1,4 @@
+/* Wishlist heart hover effect */
+.nav-link:hover .wishlist-icon {
+  color: red !important;
+}
