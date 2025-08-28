@@ -4,7 +4,7 @@ import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 import { getNowPlayingMovies } from "../api";
 
-const MoviesListPage = ({ wishlist, onToggleWishlist }) => {
+const MoviesListPage = ({ wishlist, onToggleWishlist}) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -51,31 +51,8 @@ const MoviesListPage = ({ wishlist, onToggleWishlist }) => {
 
   return (
     <div>
-      {/* Hero search bar section */}
-      <section className="bg-light p-4 rounded mb-4">
-        <h2 className="h5 mb-2">Welcome to our movie app</h2>
-        <p className="text-muted mb-3">
-          Millions of movies, TV shows and people to discover. Explore now.
-        </p>
-        <div className="input-group">
-          <input
-            type="search"
-            className="form-control form-control-lg"
-            placeholder="Search and explore..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            className="btn btn-warning btn-lg"
-            type="button"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-        </div>
-      </section>
-
-      <h1 className="h4 mb-3">Now Playing</h1>
+      <h1 className="h4 mb-2">Now Playing</h1>
+      <div className="now-line my-2"></div>
       {loading && <p>Loading...</p>}
       {error && !loading && <p className="text-danger">{error}</p>}
 

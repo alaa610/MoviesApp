@@ -4,7 +4,7 @@ import { getPopularTVShows } from "../api";
 import TVShowCard from "../components/TVShowCard";
 import Pagination from "../components/Pagination";
 
-function TVShowsList({ wishlist = [], onToggleWishlist = () => {} }) {
+function TVShowsList({ wishlist, onToggleWishlist, hideHeroSearch = false }) {
   const [shows, setShows] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,8 @@ function TVShowsList({ wishlist = [], onToggleWishlist = () => {} }) {
 
   return (
     <div>
-      <h1 className="h4 mb-3">Popular TV Shows</h1>
+      <h1 className="h4 mb-2 showsTitle">Popular TV Shows</h1>
+      <div className="now-line my-2"></div>
       {loading && <p>Loading...</p>}
       {error && !loading && <p className="text-danger">{error}</p>}
       {!loading && !error && (

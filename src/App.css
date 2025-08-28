@@ -1,4 +1,190 @@
-/* Wishlist heart hover effect */
+body{
+  overflow-x: hidden;
+  background-color: #0d0f14;
+  color: #eaeaea;
+  padding-top: 60px;
+}
+.herosection{
+  top: -50px;
+}
 .nav-link:hover .wishlist-icon {
-  color: red !important;
+  color: #f02411ff !important;
+}
+.heroBtn{
+  background-color:rgba(216, 51, 36, 0.917);
+  color: white;
+  font-size: 15px;
+  border-radius: 60px;
+}
+.btnSearch{
+  background-color: rgba(216, 51, 36, 0.917);
+}
+.btnSearch:hover{
+ background-color: rgba(216, 51, 36, 0.689);
+ border-color: rgba(216, 51, 36, 0.917);
+}
+.heroBtn:hover{
+  background-color: rgba(239, 49, 32, 0.552);
+}
+.hero-wrapper {
+  margin-top: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+.hero-content .display-5 {
+  letter-spacing: 1px;
+}
+
+.btn-hero-primary {
+  background: #f02411ff;
+  border-color: #f02411ff;
+  color: #fff;
+  border-radius: 999px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.btn-hero-primary:hover {
+  box-shadow: 0 10px 30px rgba(255, 77, 45, 0.4);
+  filter: brightness(0.98);
+}
+
+.btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: transparent;
+  border-radius: 999px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.now-line {
+  height: 1px;
+  background: #f02411ff;
+  width: 100%;
+}
+.bg-dark {
+  background-color: #141821 !important;
+}
+
+.btn-warning {
+  background-color: #f02411ff;
+  border-color: #f02411ff;
+}
+
+.btn-warning:hover {
+  filter: brightness(0.95);
+}
+.navbar.sticky-top {
+  transition: background-color 300ms ease, backdrop-filter 300ms ease;
+  height: 64px;
+}
+
+.navbar.transparent {
+  background-color: rgba(20, 24, 33, 0.55) !important;
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.navbar.white {
+  background-color: #e2e1e1df !important;
+}
+
+.navbar.white .nav-link
+ {
+  color: #0d0f14 !important;
+}
+.navbar.white .navbar-brand{
+  color: #f02411ff;
+}
+.search-translucent {
+  background: rgba(255, 255, 255, .15) !important;
+  color: #dfdddd !important;
+  border: 1px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .25);
+}
+
+.search-translucent::placeholder {
+  color: rgba(255, 255, 255, .7);
+}
+
+.input-group-text.bg-transparent {
+  border: none;
+}
+.navbar .nav-link {
+  position: relative;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #f02411ff;
+  transition: width 0.25s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+.tv-search {
+  border: 1px solid rgba(255, 77, 45, .6);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .15);
+}
+.card {
+  transition: transform .2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateZ(0) scale(1.03);
+}
+.card {
+  background: transparent !important; 
+  color: #fff !important; 
+  border: none !important; 
+}
+.card-body {
+  background: rgba(0, 0, 0, 0.233); 
+  color: #fff !important;
+  padding: 10px;
+}
+
+.card-title {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.card-body small {
+  color: #ccc !important; 
+}
+.showsTitle, .wishlist-title , .movie-details, .searchresult {
+  margin-top: 40px;
+}
+.recommendations-section {
+  margin-top: 40px;
+  padding: 20px;
+  background: transparent;
+}
+.footbtn{
+  color: rgba(216, 51, 36, 0.917);
+}
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 }

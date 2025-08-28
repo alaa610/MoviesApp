@@ -14,7 +14,6 @@ const fetchData = async (url) => {
     return { error: error.message }; 
   }
 };
-
 // Playing Movies
 export const getNowPlayingMovies = async (page = 1) => {
   return fetchData(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`);
@@ -38,47 +37,23 @@ export const getMovieReviews = async (movieId) => {
 export const searchMovies = async (query, page = 1) => {
   return fetchData(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`);
 };
-
-//TV Shows Bonus
+// Search TV Shows
+export const searchTv = async (query, page = 1) => {
+  return fetchData(`${BASE_URL}/search/tv?api_key=${API_KEY}&query=${query}&page=${page}`);
+};
+//TV Shows 
 export const getPopularTVShows = (page = 1) =>
   fetchData(`${BASE_URL}/tv/popular?api_key=${API_KEY}&page=${page}`);
 
 export const getTVShowDetails = (id) =>
   fetchData(`${BASE_URL}/tv/${id}?api_key=${API_KEY}`);
 
-let wishlist = [];
-
 // Recommended TV Shows
 export const getRecommendedTVShows = async (tvId) => {
   return fetchData(`${BASE_URL}/tv/${tvId}/recommendations?api_key=${API_KEY}`);
 };
 
-
-/*Add item to wishlist*/
-export const addToWishlist = (item, type = "movie") => {
-  const exists = wishlist.find((w) => w.id === item.id && w.type === type);
-  if (!exists) {
-    wishlist.push({ ...item, type });
-  }
-  return wishlist;
-};
-/* Remove item from wishlist */
-export const removeFromWishlist = (id, type = "movie") => {
-  wishlist = wishlist.filter((w) => !(w.id === id && w.type === type));
-  return wishlist;
-};
-/* Toggle wishlist (add/remove)*/
-export const toggleWishlist = (item, type = "movie") => {
-  const exists = wishlist.find((w) => w.id === item.id && w.type === type);
-  if (exists) {
-    return removeFromWishlist(item.id, type);
-  } else {
-    return addToWishlist(item, type);
-  }
-};
-/*Get wishlist item */
-export const getWishlist = () => wishlist;
-
+/* get image*/
 export const getImageUrl = (path, size = "w500") => {
   if (!path) {
     return "https://via.placeholder.com/500x750?text=No+Image";

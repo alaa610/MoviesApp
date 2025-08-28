@@ -38,67 +38,90 @@ function TVShowDetails() {
   };
 
   return (
-    <div className="tv-details bg-light p-4 rounded">
-      {/* TV Show info */}
-      <div className="d-flex flex-column flex-md-row gap-4">
-        <div className="col-md-4">
-          <img
-            src={getImageUrl(show.poster_path, "w500")}
-            alt={show.name}
-            className="img-fluid rounded shadow-sm"
-          />
-        </div>
-        <div className="col-md-8">
-          <h2 className="fw-bold">{show.name}</h2>
-          <p className="text-muted opacity-50">{formatDate(show.first_air_date)}</p>
-
-          <div className="d-flex align-items-center gap-2 mb-2">
-            {renderStars(show.vote_average)}
-            <span className="fw-bold">{show.vote_average?.toFixed(1)}</span>
-            <span>({show.vote_count} votes)</span>
+    <>
+    <h2 className="h4 mb-3 wishlist-title">Show Details</h2>
+    <div className="now-line my-2"></div>
+    <div
+      className="movie-details p-4 text-white"
+      style={{
+        backgroundImage: `url(${getImageUrl(show.backdrop_path, "w1280")})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
+      }}
+    >
+      {/* Overlay غامق */}
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          padding: "20px",
+          borderRadius: "10px",
+        }}
+      >
+        {/* show info */}
+        <div className="d-flex flex-column flex-md-row gap-4">
+          <div className="col-md-4">
+            <img
+              src={getImageUrl(show.poster_path, "w500")}
+              alt={show.name}
+              className="img-fluid rounded shadow-sm"
+            />
           </div>
-
-          <p className="text-muted">{show.overview}</p>
-
-          <div className="mb-2">
-            {show.genres?.map((genre) => (
-              <span key={genre.id} className="badge bg-warning text-dark me-2">
-                {genre.name}
-              </span>
-            ))}
-          </div>
-          <div className="d-flex gap-4 mt-4">
-            <p>
-              <strong>Seasons:</strong> {show.number_of_seasons}
-            </p>
-            <p>
-              <strong>Episodes:</strong> {show.number_of_episodes}
-            </p>
-          </div>
-
-          <div className="mt-3 d-flex flex-column justify-content-start align-items-start gap-2">
-            {show.production_companies?.[0]?.logo_path && (
-              <img
-                src={getImageUrl(show.production_companies[0].logo_path, "w200")}
-                alt="Studio Logo"
-                height={40}
-              />
-            )}
-            {show.homepage && (
-              <a
-                href={show.homepage}
-                className="btn btn-outline-dark btn-sm mt-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Website 🔗
-              </a>
-            )}
+          <div className="col-md-8">
+            <h2 className="fw-bold">{show.name}</h2>
+            <p className="opacity-75">{formatDate(show.first_air_date)}</p>
+            <div className="d-flex align-items-center gap-2 mb-2">
+              {renderStars(show.vote_average)}
+              <span className="fw-bold">{show.vote_average?.toFixed(1)}</span>
+              <span>({show.vote_count} votes)</span>
+            </div>
+            <p className="opacity-75">{show.overview}</p>
+            <div className="mb-2">
+              {show.genres?.map((genre) => (
+                <span
+                  key={genre.id}
+                  className="badge bg-warning text-dark me-2"
+                >
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+            <div className="d-flex gap-4 mt-4">
+              <p>
+                <strong>Seasons:</strong> {show.number_of_seasons}
+              </p>
+              <p>
+                <strong>Episodes:</strong> {show.number_of_episodes}
+              </p>
+            </div>
+            <div className="mt-3 d-flex flex-column justify-content-start align-items-start gap-2">
+              {show.production_companies?.[0]?.logo_path && (
+                <img
+                  src={getImageUrl(
+                    show.production_companies[0].logo_path,
+                    "w200"
+                  )}
+                  alt="Studio Logo"
+                  height={40}
+                />
+              )}
+              {show.homepage && (
+                <a
+                  href={show.homepage}
+                  className="btn btn-outline-light btn-sm mt-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Website 🔗
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <br />
+    </div>
       {/* Recommendations */}
+      <div className="recommendations-section mt-5 text-white">
       <h2 className="mt-5 mb-4">Recommendations</h2>
       <div className="row">
         {recommendations.slice(0, 6).map((rec) => {
@@ -109,9 +132,11 @@ function TVShowDetails() {
               : score >= 60
               ? "bg-warning text-dark"
               : "bg-danger";
-
           return (
-            <div key={rec.id} className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+            <div
+              key={rec.id}
+              className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4"
+            >
               <Link
                 to={`/tv/${rec.id}`}
                 className="text-decoration-none text-dark"
@@ -131,8 +156,9 @@ function TVShowDetails() {
                     e.currentTarget.style.boxShadow = "";
                   }}
                 >
+                  {/* Rating circle */}
                   <div
-                    className={`position-absolute badge  ${scoreColor}`}
+                    className={`position-absolute badge ${scoreColor}`}
                     style={{
                       left: "8px",
                       bottom: "65px",
@@ -148,14 +174,14 @@ function TVShowDetails() {
                   >
                     {score}%
                   </div>
-
+                  {/* Poster */}
                   <img
                     src={getImageUrl(rec.poster_path, "w200")}
                     className="card-img-top mb-4"
                     alt={rec.name}
                     style={{ height: "230px", objectFit: "cover" }}
                   />
-
+                  {/* Title + Date */}
                   <div className="card-body p-2">
                     <h6
                       className="card-title mb-1"
@@ -163,10 +189,10 @@ function TVShowDetails() {
                     >
                       {rec.name?.length > 20
                         ? rec.name.slice(0, 20) + "..."
-                        : rec.name}
+                        : rec.title}
                     </h6>
                     <small className="text-muted">
-                      {formatDate(rec.first_air_date)}
+                      {formatDate(rec.release_date)}
                     </small>
                   </div>
                 </div>
@@ -176,7 +202,8 @@ function TVShowDetails() {
         })}
       </div>
     </div>
+    </>
   );
-}
+};
 
 export default TVShowDetails;

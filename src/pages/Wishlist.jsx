@@ -13,7 +13,8 @@ const Wishlist = ({ wishlist, onToggleWishlist }) => {
 
     return (
         <div>
-            <h2 className="h4 mb-3">Your Wishlist ({wishlist.length} movies)</h2>
+            <h2 className="h4 mb-3 wishlist-title">Your Wishlist ({wishlist.length} movies)</h2>
+            <div className="now-line my-2"></div>
             <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
                 {wishlist.map((movie) => (
                     <div className="col" key={movie.id}>
