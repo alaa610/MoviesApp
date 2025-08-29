@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SearchBar() {
+function SearchBar({ onClose }) {  
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -9,7 +9,11 @@ function SearchBar() {
     e.preventDefault();
     if (query.trim()) {
       navigate(`/search/${encodeURIComponent(query.trim())}`);
-      setQuery(""); 
+      setQuery("");
+
+      if (onClose) {
+        onClose();   
+      }
     }
   }
 
